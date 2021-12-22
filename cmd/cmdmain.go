@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/kubeovn/kube-ovn/cmd/health_check"
 	"os"
 	"strings"
 
@@ -14,11 +15,12 @@ import (
 )
 
 const (
-	CmdController = "kube-ovn-controller"
-	CmdDaemon     = "kube-ovn-daemon"
-	CmdMonitor    = "kube-ovn-monitor"
-	CmdPinger     = "kube-ovn-pinger"
-	CmdSpeaker    = "kube-ovn-speaker"
+	CmdController  = "kube-ovn-controller"
+	CmdDaemon      = "kube-ovn-daemon"
+	CmdMonitor     = "kube-ovn-monitor"
+	CmdPinger      = "kube-ovn-pinger"
+	CmdSpeaker     = "kube-ovn-speaker"
+	CmdHealthCheck = "kube-ovn-healthcheck"
 )
 
 func main() {
@@ -35,6 +37,8 @@ func main() {
 		pinger.CmdMain()
 	case CmdSpeaker:
 		speaker.CmdMain()
+	case CmdHealthCheck:
+		health_check.CmdMain()
 	default:
 		klog.Fatalf("%s is an unknown command", cmd)
 	}
